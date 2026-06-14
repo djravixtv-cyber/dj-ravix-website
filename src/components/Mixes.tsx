@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import { title } from "framer-motion/m";
-
 const mixes = [
   {
     title: "Amapiano Mix",
