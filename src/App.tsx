@@ -10,6 +10,10 @@ import Gallery from "./components/Gallery";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Socials from "./components/Socials";
 import Footer from "./components/footer";
+import FeaturedMix from "./components/FeaturedMix";
+import Contact from "./components/Contact";
+import Testimonials from "./components/Testimonials";
+import About from "./components/About";
 function App() {
   return (
     <div className="app">
@@ -26,6 +30,10 @@ function App() {
       <Events />
       <Gallery />
       <Booking />
+      <FeaturedMix />
+      <Contact />
+      <Testimonials />
+      <About />
       <WhatsAppButton />
       <Socials />
       <Footer />

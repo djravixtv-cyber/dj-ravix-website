@@ -2,42 +2,46 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="hero-content" id="home">
-  <motion.h1
-  initial={{ opacity: 0, y: -100 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
->
-  DJ RAVIX
-</motion.h1>
+    <section className="hero-content">
+
+      <img
+  src="/ravix-logo.png"
+  alt="DJ Ravix Logo"
+  className="hero-logo"
+/>
+
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        DJ RAVIX
+      </motion.h1>
 
       <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        Kenya's Next Big Sound
-      </motion.p>
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.5 }}
+>
+  Professional DJ • MC • Event Entertainer
+</motion.p>
 
-      <div className="hero-buttons">
-        <motion.button
-          whileHover={{
-            scale: 1.1,
-            boxShadow: "0 0 40px cyan",
-          }}
-        >
-          Listen To Mixes
-        </motion.button>
+<p className="hero-description">
+  Nairobi's Premier DJ for Clubs, Weddings,
+  Corporate Events and Private Parties.
+</p>
 
-        <motion.button
-          className="secondary-btn"
-          whileHover={{
-            scale: 1.1,
-          }}
-        >
-          Book DJ Ravix
-        </motion.button>
+<div className="hero-buttons">
+        <a href="#booking">
+          <button>Book Now</button>
+        </a>
+
+        <a href="#mixes">
+          <button className="secondary-btn">
+            Listen To Mixes
+          </button>
+        </a>
       </div>
+
     </section>
   );
 }

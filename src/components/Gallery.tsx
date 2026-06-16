@@ -1,10 +1,7 @@
 import { motion } from "framer-motion";
 
 const images = [
-  "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
-  "https://images.unsplash.com/photo-1501386761578-eac5c94b800a",
-  "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
-  "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec",
+  "/ravix-logo.png",
 ];
 
 export default function Gallery() {
