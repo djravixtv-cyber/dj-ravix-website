@@ -9,7 +9,7 @@ import Stats from "./components/Stats";
 import Gallery from "./components/Gallery";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Socials from "./components/Socials";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import FeaturedMix from "./components/FeaturedMix";
 import Contact from "./components/Contact";
 import Testimonials from "./components/Testimonials";

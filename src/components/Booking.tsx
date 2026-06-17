@@ -1,5 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { supabase } from "../lib/supabase";
 
 export default function Booking() {
   const [form, setForm] = useState({
@@ -21,24 +22,43 @@ export default function Booking() {
     });
   };
 
- const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
- emailjs.send(
-  "service_ejzkjwj",
-  "template_fikdgye",
-      {
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        eventType: form.eventType,
-        location: form.location,
-        date: form.date,
-        message: form.message,
-      },
-      "s3sHjL5faIrx-Tyt4"
-    )
-    .then(() => {
+    try {
+      const { error } = await supabase.from("bookings").insert([
+        {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          event_type: form.eventType,
+          message: `
+Location: ${form.location}
+
+Date: ${form.date}
+
+${form.message}
+          `,
+        },
+      ]);
+
+      if (error) throw error;
+
+      await emailjs.send(
+        "service_ejzkjwj",
+        "template_fikdgye",
+        {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          eventType: form.eventType,
+          location: form.location,
+          date: form.date,
+          message: form.message,
+        },
+        "s3sHjL5faIrx-Tyt4"
+      );
+
       alert("Booking request sent successfully!");
 
       setForm({
@@ -50,12 +70,11 @@ export default function Booking() {
         date: "",
         message: "",
       });
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error(error);
       alert("Failed to send booking request.");
-    });
-};
+    }
+  };
 
   return (
     <section className="booking" id="booking">
@@ -63,12 +82,12 @@ export default function Booking() {
 
       <form className="booking-form" onSubmit={handleSubmit}>
         <input
-  type="text"
-  name="name"
-  value={form.name}
-  placeholder="Full Name"
-  onChange={handleChange}
-/>
+          type="text"
+          name="name"
+          value={form.name}
+          placeholder="Full Name"
+          onChange={handleChange}
+        />
 
         <input
           type="email"
@@ -79,12 +98,12 @@ export default function Booking() {
         />
 
         <input
-  type="tel"
-  name="phone"
-  value={form.phone}
-  placeholder="Phone Number"
-  onChange={handleChange}
-/>
+          type="tel"
+          name="phone"
+          value={form.phone}
+          placeholder="Phone Number"
+          onChange={handleChange}
+        />
 
         <input
           type="text"
@@ -102,12 +121,12 @@ export default function Booking() {
           onChange={handleChange}
         />
 
-       <input
-  type="date"
-  name="date"
-  value={form.date}
-  onChange={handleChange}
-/>
+        <input
+          type="date"
+          name="date"
+          value={form.date}
+          onChange={handleChange}
+        />
 
         <textarea
           rows={5}
@@ -117,9 +136,9 @@ export default function Booking() {
           onChange={handleChange}
         />
 
-    <button type="submit">
-  Submit Booking Request
-</button>
+        <button type="submit">
+          Submit Booking Request
+        </button>
       </form>
     </section>
   );

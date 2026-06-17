@@ -720,4 +720,19 @@ body{
 .about-card p{
   line-height:1.8;
   margin-bottom:20px;
+}.admin-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(0,255,255,.2);
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+}
+
+.admin-card h2{
+  color:#00ffff;
+  margin-bottom:10px;
+}
+
+.admin-card h3{
+  font-size:2rem;
 }
